@@ -4,9 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
+<style>
+    /*Default light mode */
+    body {
+        background-color: white;
+        color: black;
+    }
+
+    /* Dark mode appearance */
+    body.dark-mode {
+        background-color: #1a1a1a;
+        color: white;
+    }
+
+    /* Make links readable in dark mode */
+    body.dark-mode a {
+        color: lightblue;
+    }
+    /* Style the Featured Content resource boxes */
+    #universityResources,
+    #personalProjects {
+        padding: 15px;
+        margin: 10px 0;
+        border: 2px solid #777;
+        border-radius: 8px;
+    }
+
+    /* Make the boxes stand out in dark mode */
+    body.dark-mode #universityResources,
+    body.dark-mode #personalProjects {
+        border-color: lightblue;
+    }
+</style>    
 </head>
 
 <body>
+    <label for="darkModeToggle">Dark Mode</label>
+    <input type="checkbox" id="darkModeToggle">
     <p id="welcomeMessage">Welcome to my portfolio!</p>
     <header>
         <h1>My Portfolio</h1>
@@ -17,6 +51,27 @@
         </nav>
     </header>
     <main>
+        <section id="featured">
+            <h2>Featured Content</h2>
+
+            <div id="universityResources">
+                <h3>University Resources</h3>
+                <p>
+                    <a href="https://www.ecpi.edu/programs/software-development-bachelor-degree">
+                        ECPI Software Development Program
+                    </a>
+                </p>
+            </div>
+
+            <div id="personalProjects">
+                <h3>Personal Projects</h3>
+                <a href="https://github.com/Ash-School-42/Tabletop-Encounter-Tracker">
+                <img src="https://placehold.co/200x150?text=Encounter+Tracker"
+                    alt="Tabletop Encounter Tracker project"
+                    width="200">
+                </a>
+            </div>
+        </section>
         <section id="about">
             <h2>About Me</h2>
             <p>
@@ -25,6 +80,10 @@
                 I'm interested in building websites, games,
                 and applications that support my hobbies.
             </p>
+
+            <h3>My Skills</h3>
+            <ul id="skillsList"></ul>
+
         </section>
         <section id="projects">
             <h2>My Projects</h2>
@@ -80,6 +139,61 @@
             document.getElementById("welcomeMessage").textContent = 
                 "Welcome to my portfolio, "  + visitorName + "!";
         }
+
+        // Count the projects listed in the Projects section
+        let projectCount = document.querySelectorAll("#projects a").length;
+
+        // Select the Featured Content div element
+        let universityResources = document.getElementById("universityResources");
+        let personalProjects = document.getElementById("personalProjects");
+
+        // Show or hide resources based on the number of projects
+        if (projectCount < 3) {
+            universityResources.style.display = "block";
+            personalProjects.style.display = "block";
+        } else {
+            universityResources.style.display = "none";
+            personalProjects.style.display = "block";
+        }
+
+        // Array of skills and technologies
+        let skills =["HTML", "CSS", "JavaScript", "Git", "GitHub"];
+
+        // Select the skills list in the About section
+        let skillsList = document.getElementById("skillsList");
+
+        skills.forEach(function(skill) {
+            let listItem = document.createElement("li");
+            listItem.textContent = skill;
+            skillsList.appendChild(listItem);
+        });
+
+        // Select the Darkmode checkbox
+        let darkModeToggle = document.getElementById("darkModeToggle");
+
+        // Switch between light and dark mode
+        darkModeToggle.addEventListener("change", function() {
+            if (darkModeToggle.checked) {
+                document.body.classList.add("dark-mode");
+            } else {
+                document.body.classList.remove("dark-mode");
+            }
+        });
+
+        // Select the Contact form's submit button
+        let submitButton = document.querySelector('button[type="submit"]');
+
+        // Display a personalized confirmation when submitted
+        submitButton.addEventListener("click", function(event) {
+            // Prevent the form from refreshing the page
+            event.preventDefault();
+
+            // Get the visitor's name from the form
+            let contactName = document.getElementById("name").value;
+
+            // Display the confirmation message
+            alert("Thank you, " + contactName + ", your message has been sent!");
+        });
     </script>
 </body>
 </html>
