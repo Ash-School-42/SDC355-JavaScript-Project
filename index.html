@@ -1,61 +1,69 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
-<style>
-    /*Default light mode */
-    body {
-        background-color: white;
-        color: black;
-    }
 
-    /* Dark mode appearance */
-    body.dark-mode {
-        background-color: #1a1a1a;
-        color: white;
-    }
+    <style>
+        /* Default light mode */
+        body {
+            background-color: white;
+            color: black;
+        }
 
-    /* Make links readable in dark mode */
-    body.dark-mode a {
-        color: lightblue;
-    }
-    /* Style the Featured Content resource boxes */
-    #universityResources,
-    #personalProjects {
-        padding: 15px;
-        margin: 10px 0;
-        border: 2px solid #777;
-        border-radius: 8px;
-    }
+        /* Dark mode appearance */
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: white;
+        }
 
-    /* Make the boxes stand out in dark mode */
-    body.dark-mode #universityResources,
-    body.dark-mode #personalProjects {
-        border-color: lightblue;
-    }
-</style>    
+        /* Make links readable in dark mode */
+        body.dark-mode a {
+            color: lightblue;
+        }
+
+        /* Style the Featured Content resource boxes */
+        #universityResources,
+        #personalProjects {
+            padding: 15px;
+            margin: 10px 0;
+            border: 2px solid #777;
+            border-radius: 8px;
+        }
+
+        /* Make the boxes stand out in dark mode */
+        body.dark-mode #universityResources,
+        body.dark-mode #personalProjects {
+            border-color: lightblue;
+        }
+    </style>
 </head>
 
 <body>
     <label for="darkModeToggle">Dark Mode</label>
     <input type="checkbox" id="darkModeToggle">
+
     <p id="welcomeMessage">Welcome to my portfolio!</p>
+
     <header>
         <h1>My Portfolio</h1>
+
         <nav>
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
-             <a href="#contact">Contacts</a>
+            <a href="#contact">Contacts</a>
         </nav>
     </header>
+
     <main>
         <section id="featured">
             <h2>Featured Content</h2>
 
             <div id="universityResources">
                 <h3>University Resources</h3>
+
                 <p>
                     <a href="https://www.ecpi.edu/programs/software-development-bachelor-degree">
                         ECPI Software Development Program
@@ -65,15 +73,18 @@
 
             <div id="personalProjects">
                 <h3>Personal Projects</h3>
+
                 <a href="https://github.com/Ash-School-42/Tabletop-Encounter-Tracker">
-                <img src="https://placehold.co/200x150?text=Encounter+Tracker"
-                    alt="Tabletop Encounter Tracker project"
-                    width="200">
+                    <img src="https://placehold.co/200x150?text=Encounter+Tracker"
+                         alt="Tabletop Encounter Tracker project"
+                         width="200">
                 </a>
             </div>
         </section>
+
         <section id="about">
             <h2>About Me</h2>
+
             <p>
                 Hello! I'm a software development student
                 currently learning HTML, CSS, and JavaScript.
@@ -83,16 +94,19 @@
 
             <h3>My Skills</h3>
             <ul id="skillsList"></ul>
-
         </section>
+
         <section id="projects">
             <h2>My Projects</h2>
+
             <p>Here are some projects I've worked on.</p>
+
             <a href="https://github.com/Ash-School-42/Tabletop-Encounter-Tracker">
                 <img src="https://placehold.co/200x150?text=Encounter+Tracker"
-                    alt="Tabletop Encounter Tracker project"
-                    width="200">
+                     alt="Tabletop Encounter Tracker project"
+                     width="200">
             </a>
+
             <a href="https://github.com/Ash-School-42">
                 <img src="https://placehold.co/200x150?text=Project+2"
                      alt="Second project placeholder"
@@ -105,45 +119,49 @@
                      width="200">
             </a>
         </section>
-        
+
         <section id="contact">
             <h2>Contact Me</h2>
+
             <p>
-                Have a question or want to geet in touch?
+                Have a question or want to get in touch?
                 Send a message below!
             </p>
 
-        <form>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+            <form id="contactForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
 
-            <label for="email">Email:</label>
-            <input type="email" id=""email" name="email" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
 
-            <label for="subject">Subject:</label>
-            <input type="text" id="subject" name="subject" required>
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" required>
 
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
-        </section>   
-            <button type="submit">Submit</button>
-        </form>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <button type="submit">Submit</button>
+
+                <p id="formStatus" role="status" aria-live="polite"></p>
+            </form>
+        </section>
     </main>
 
     <script>
-        // Ask the visitor for thier name
+        // Ask the visitor for their name
         let visitorName = prompt("What is your name?");
 
         // Personalize the greeting
         if (visitorName && visitorName.trim() !== "") {
-            document.getElementById("welcomeMessage").textContent = 
-                "Welcome to my portfolio, "  + visitorName + "!";
+            document.getElementById("welcomeMessage").textContent =
+                "Welcome to my portfolio, " + visitorName + "!";
         }
 
         // Count the projects listed in the Projects section
         let projectCount = document.querySelectorAll("#projects a").length;
 
-        // Select the Featured Content div element
+        // Select the Featured Content div elements
         let universityResources = document.getElementById("universityResources");
         let personalProjects = document.getElementById("personalProjects");
 
@@ -157,18 +175,19 @@
         }
 
         // Array of skills and technologies
-        let skills =["HTML", "CSS", "JavaScript", "Git", "GitHub"];
+        let skills = ["HTML", "CSS", "JavaScript", "Git", "GitHub"];
 
         // Select the skills list in the About section
         let skillsList = document.getElementById("skillsList");
 
+        // Dynamically add each skill to the list
         skills.forEach(function(skill) {
             let listItem = document.createElement("li");
             listItem.textContent = skill;
             skillsList.appendChild(listItem);
         });
 
-        // Select the Darkmode checkbox
+        // Select the Dark Mode checkbox
         let darkModeToggle = document.getElementById("darkModeToggle");
 
         // Switch between light and dark mode
@@ -180,19 +199,45 @@
             }
         });
 
-        // Select the Contact form's submit button
-        let submitButton = document.querySelector('button[type="submit"]');
+        // Dynamically create and add a paragraph to the About Me section
+        let about = document.getElementById("about");
+        let newPara = document.createElement("p");
+        newPara.textContent = "I am learning JavaScript";
+        about.appendChild(newPara);
 
-        // Display a personalized confirmation when submitted
-        submitButton.addEventListener("click", function(event) {
-            // Prevent the form from refreshing the page
+        // Select and modify the portfolio heading
+        let portfolioHeading = document.querySelector("h1");
+        portfolioHeading.textContent = "James Ash's Portfolio";
+
+        // Select and change the color of the first h2 heading
+        let subHeading = document.querySelector("h2");
+        subHeading.style.color = "purple";
+
+        // Select the Contact form and status message
+        let contactForm = document.getElementById("contactForm");
+        let formStatus = document.getElementById("formStatus");
+
+        // Handle the Contact form submission
+        contactForm.addEventListener("submit", function(event) {
+
+            // Prevent the page from refreshing
             event.preventDefault();
 
             // Get the visitor's name from the form
             let contactName = document.getElementById("name").value;
 
-            // Display the confirmation message
-            alert("Thank you, " + contactName + ", your message has been sent!");
+            // Display a sending message
+            formStatus.textContent = "Sending message...";
+
+            // Wait 3 seconds before displaying confirmation
+            setTimeout(function() {
+
+                // Replace the sending message with confirmation
+                formStatus.textContent =
+                    "Thank you, " + contactName + "! Your message has been sent!";
+
+            }, 3000);
+
         });
     </script>
 </body>
